@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | IEEE RAS ISSATM</title>
+  <link rel="icon" type="image/png" href="gallery-images/iassatm RAS.png">
+  <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html" aria-label="IEEE RAS ISSATM home">
+        <img src="gallery-images/RAS.png" alt="" onerror="this.style.display='none'">
+      </a>
+      <span class="brand-name">IEEE RAS ISSATM</span>
+      <nav aria-label="Main navigation">
+        <a href="../home/index.html">Home</a>
+        <a href="../events/events.html">Work</a>
+        <a href="../team/team.html">Team</a>
+        <a class="active" href="gallery.html">Gallery</a>
+        <a href="../home/index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="gallery-shell" aria-label="Gallery">
+    <section class="featured-photo" aria-label="Featured gallery photo">
+      <img src="gallery-images/tsypteam.jpg" alt="Featured gallery photo"
+           onerror="this.style.display='none'; this.parentElement.classList.add('image-missing')">
+    </section>
+
+    <section class="gallery-list" aria-label="Gallery photos">
+      <div class="gallery-row row-1" aria-label="Line 1"><div class="gallery-track"></div></div>
+      <div class="gallery-row row-2" aria-label="Line 2"><div class="gallery-track"></div></div>
+      <div class="gallery-row row-3" aria-label="Line 3"><div class="gallery-track"></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="social-links">
+      <a href="#" aria-label="Facebook"><img src="gallery-images/fcbk.webp" alt="" onerror="this.style.display='none'"></a>
+      <a href="#" aria-label="Instagram"><img src="gallery-images/insta.webp" alt="" onerror="this.style.display='none'"></a>
+      <a href="#" aria-label="LinkedIn"><img src="gallery-images/linkidine.webp" alt="" onerror="this.style.display='none'"></a>
+    </div>
+  </footer>
+
+  <script>
+    /*
+      Add each event photo by its real filename inside gallery-images.
+      Example: "gallery-images/TSYP-2025.jpg"
+      Keep 33 entries for 11 photos in each of the 3 moving rows.
+    */
+    const photos = [
+      "gallery-images/CASS.jpg",
+      "gallery-images/conferance2.jpg",
+      "gallery-images/coupe lazer.jpg",
+      "gallery-images/ensit.jpg",
+      "gallery-images/integration3.jpg",
+      "gallery-images/integrationday.jpg",
+      "gallery-images/mecanique.jpg",
+      "gallery-images/meet.jpg",
+      "gallery-images/ecole2.jpg",
+      "gallery-images/rasaras.jpg",
+      "gallery-images/robot.jpg",
+      "gallery-images/teambuilding.jpg",
+      "gallery-images/intert.jpg",
+      "gallery-images/workshop2.jpg",
+      "gallery-images/team.jpg",
+      "gallery-images/ecole.jpg",
+      "gallery-images/ieeeday.jpg",
+      "gallery-images/integration2.jpg",
+      "gallery-images/couperlazer.jpg",
+      "gallery-images/integration5.jpg",
+      "gallery-images/rasaras2.jpg",
+      "gallery-images/integration4.jpg",
+      "gallery-images/tsyp3.jpg",
+      "gallery-images/rasaras3.jpg",
+      "gallery-images/workshop.jpg",
+      "gallery-images/teambuilding2.jpg",
+      "gallery-images/tout terrain.jpg",
+      "gallery-images/rasaras4.jpg",
+      "gallery-images/rasbenefits.jpg",
+      "gallery-images/rasaras5.jpg",
+      "gallery-images/robot2.jpg",
+      "gallery-images/inter.jpg",
+      "gallery-images/rasaras6.jpg"
+    ];
+
+    const rows = [...document.querySelectorAll('.gallery-row')];
+    rows.forEach((row, rowIndex) => {
+      const track = row.querySelector('.gallery-track');
+      const rowPhotos = photos.slice(rowIndex * 11, rowIndex * 11 + 11);
+      // Duplicate the cards so the horizontal animation loops smoothly.
+      [...rowPhotos, ...rowPhotos].forEach((photo, copyIndex) => {
+        const card = document.createElement('figure');
+        card.className = 'photo-card';
+        card.innerHTML = `
+          <div class="photo-frame">
+            <img src="${photo}" alt="Gallery event photo ${copyIndex + 1}" loading="lazy"
+              onerror="this.style.display='none'; this.parentElement.classList.add('image-missing')">
+          </div>
+        `;
+        if (copyIndex >= rowPhotos.length) card.setAttribute('aria-hidden', 'true');
+        track.appendChild(card);
+      });
+    });
+  </script>
+</body>
+</html>
